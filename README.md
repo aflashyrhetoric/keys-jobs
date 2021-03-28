@@ -12,6 +12,19 @@ https://lucid.app/lucidchart/04dd7712-5c91-4ea5-896f-835a2ff992d4/edit?page=0_0#
 - Fetch AirTable Base recommendations and cache to Redis
 - Fetch scraped product data from Zyte and cache to Redis
 
+## Endpoints
+
+Hitting endpoints with GET requests will trigger the jobs on the server.
+
+<!-- TODO - Require POST requests with some auth LOL -->
+
+The current endpoints are:
+
+- /fetch-zyte-data
+- /cache-zyte-data
+- /fetch-airtable-data
+- /cache-airtable-data
+
 # How To Run 
 
 ```
