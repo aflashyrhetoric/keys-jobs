@@ -1,28 +1,33 @@
 import express from "express"
-// import { getGenres } from "./lib/scraper"
-// import db from "./lib/db"
-// import "./lib/cron"
+const Redis = require("ioredis")
+
 import { fetchZyteData } from "./src/zyte"
 
+// ***************
+// Configure Redis
+// ***************
+const redisConnectionString = `rediss://default:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`
+const redis = new Redis(redisConnectionString) // uses defaults unless given configuration object
+
+// ***************
+// Initialize Express
+// ***************
 const app = express()
 
-// app.get("/scrape", async (req, res, next) => {
-//   console.log("Scraping!")
-//   let genres = await getGenres(
-//     "http://everynoise.com/everynoise1d.cgi?scope=all",
-//   )
-//   db.set("date", Date.now()).write()
-//   db.set("genres", genres).write()
-//   res.json(genres)
-// })
-
-app.get("/fetch_zyte_data", async (req, res, next) => {
+// ***************
+// Routes / Endpoints
+// ***************
+app.get("/refresh_product_data", async (req, res, next) => {
   let data = await fetchZyteData()
-
-  console.log(JSON.stringify(data, null, 2))
-  // db.set('date', Date.now()).write();
-  // db.set('genres', genres).write();
-  res.json(data)
+  await redis.set("product_data", JSON.stringify(data))
+  await redis.set("products_last_updated", `${new Date()}`)
+  const msg = "Products successfully refreshed"
+  console.log(msg)
+  
+  res.json({
+    status: 200,
+    msg,
+  })
 })
 
 app.listen(3210, () => {

@@ -4,9 +4,6 @@ if (process.env.NODE_ENV !== "production") {
 
 import axios from "axios"
 
-// const Redis = require("ioredis")
-// const redis = new Redis() // uses defaults unless given configuration object
-
 const base = "https://storage.scrapinghub.com/items"
 const ZYTE_PROJECT_ID = process.env.ZYTE_PROJECT_ID
 const ZYTE_API_KEY = process.env.ZYTE_API_KEY
@@ -16,9 +13,6 @@ export const fetchZyteData = async () => {
   const url = `${base}/${ZYTE_PROJECT_ID}`
   console.log("Requesting scraped data from Zyte...")
   const scraped_data_response = await axios.get(url, {
-    // headers: {
-    //   Authorization: `Basic ${ZYTE_API_KEY}:`,
-    // },
     auth: {
       username: ZYTE_API_KEY,
       password: "",
