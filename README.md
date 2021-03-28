@@ -25,9 +25,18 @@ The current endpoints are:
 - /fetch-airtable-data
 - /cache-airtable-data
 
+## Connect to Redis
+
+1. First install the Redli client from IBM: https://github.com/IBM-Cloud/redli/releases. If you're on a Mac, you'll likely need to download their darwin release, then `chmod +x` it and move it to `/usr/local/bin` (or wherever you want in your PATH)
+2. Run the following: redli --tls -h {REDIS_HOST} -a {REDIS_PASSWORD} -p 25061
+3. You can now run commands in the interactive CLI
+
 # How To Run 
 
 ```
 yarn install
 yarn run dev
 ```
+
+## Resources
+- DigitalOcean Managed DB: https://cloud.digitalocean.com/databases/keys-redis-cluster-nyc1?i=c9f171
