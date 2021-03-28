@@ -20,10 +20,8 @@ Hitting endpoints with GET requests will trigger the jobs on the server.
 
 The current endpoints are:
 
-- /fetch-zyte-data
-- /cache-zyte-data
-- /fetch-airtable-data
-- /cache-airtable-data
+- /refresh_product_data
+- /refresh_airtable_data
 
 ## Connect to Redis
 
