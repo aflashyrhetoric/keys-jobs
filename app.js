@@ -1,5 +1,6 @@
 import express from "express"
 const Redis = require("ioredis")
+require("dotenv").config()
 
 import { fetchZyteData } from "./src/zyte"
 
@@ -23,7 +24,7 @@ app.get("/refresh_product_data", async (req, res, next) => {
   await redis.set("products_last_updated", `${new Date()}`)
   const msg = "Products successfully refreshed"
   console.log(msg)
-  
+
   res.json({
     status: 200,
     msg,
@@ -32,10 +33,9 @@ app.get("/refresh_product_data", async (req, res, next) => {
 
 app.get("/fetch_product_data", async (req, res, next) => {
   let data = await redis.get("product_data")
-  // await redis.set("products_last_updated", `${new Date()}`)
-  // const msg = "Products successfully refreshed"
-  // console.log(msg)
-  
+
+  res.setHeader("Access-Control-Allow-Origin", "*")
+
   res.json({
     status: 200,
     data,
