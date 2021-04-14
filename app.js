@@ -30,6 +30,18 @@ app.get("/refresh_product_data", async (req, res, next) => {
   })
 })
 
+app.get("/fetch_product_data", async (req, res, next) => {
+  let data = await redis.get("product_data")
+  // await redis.set("products_last_updated", `${new Date()}`)
+  // const msg = "Products successfully refreshed"
+  // console.log(msg)
+  
+  res.json({
+    status: 200,
+    data,
+  })
+})
+
 app.listen(3210, () => {
   console.log(`running on port 3210`)
 })
