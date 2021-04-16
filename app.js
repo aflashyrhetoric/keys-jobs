@@ -18,11 +18,14 @@ const app = express()
 // ***************
 // Routes / Endpoints
 // ***************
-app.get("/refresh_product_data", async (req, res, next) => {
-  let data = await fetchZyteData()
+app.get("/refresh_product_data/:runNumber", async (req, res, next) => {
+
+  const runNumber = req.params.runNumber
+
+  let data = await fetchZyteData(runNumber)
   await redis.set("product_data", JSON.stringify(data))
   await redis.set("products_last_updated", `${new Date()}`)
-  const msg = "Products successfully refreshed"
+  const msg = `Products successfully refreshed for run #${runNumber}`
   console.log(msg)
 
   res.json({

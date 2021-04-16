@@ -8,10 +8,14 @@ const base = "https://storage.scrapinghub.com/items"
 const ZYTE_PROJECT_ID = process.env.ZYTE_PROJECT_ID
 const ZYTE_API_KEY = process.env.ZYTE_API_KEY
 
-export const fetchZyteData = async () => {
-  // The endpoint is a combination of the base URL and our specific project's ID
-  const url = `${base}/${ZYTE_PROJECT_ID}`
-  console.log("Requesting scraped data from Zyte...")
+// The endpoint is a combination of:
+// the base URL
+// our specific project's ID
+// the spider's ID
+// the run's ID
+export const fetchZyteData = async (runNumber) => {
+  const url = `${base}/${ZYTE_PROJECT_ID}/${runNumber}`
+  console.log(`Requesting scraped data from Zyte for job #${runNumber}...`)
   const scraped_data_response = await axios.get(url, {
     auth: {
       username: ZYTE_API_KEY,

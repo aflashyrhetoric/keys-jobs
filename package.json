@@ -6,6 +6,10 @@
   "scripts": {
     "dev": "nodemon -r esm app.js"
   },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "all"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
