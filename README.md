@@ -1,5 +1,7 @@
 # Keys: Jobs
 
+WARNING: It seems that running a VPN will break functionality. Disable VPNs before continuing with development.
+
 This file is not a development server and does not contain logic for the API. If you're looking for the keys backend, look at keys-go.
 
 This file contains jobs that help to process the data that is used for keys.
