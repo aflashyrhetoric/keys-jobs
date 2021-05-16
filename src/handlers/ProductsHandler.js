@@ -1,23 +1,18 @@
+import init from "./initHandler"
 export default class ProductsHandler {
-  constructor(redis, msg) {
-    this.redis = redis
-    this.msg = msg
-    console.log("ProductsHandler initialized")
+  static async getProductData(req, res, next) {
+    const { redis } = init()
+    const data = await redis.get("product_data")
+
+    res.setHeader("Access-Control-Allow-Origin", "*")
+
+    res.json({
+      status: 200,
+      data,
+    })
   }
 
-  async GetProductData(req, res, next) {
-    console.log(this.msg)
-    // const data = await this.redis.get("product_data")
-
-    // res.setHeader("Access-Control-Allow-Origin", "*")
-
-    // return res.json({
-    //   status: 200,
-    //   data,
-    // })
-  }
-
-  async SaveProductData(fields) {
-    console.log(fields)
-  }
+  // async SaveProductData(fields) {
+  //   console.log(fields)
+  // }
 }
