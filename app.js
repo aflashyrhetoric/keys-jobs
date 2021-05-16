@@ -1,8 +1,17 @@
 import express from "express"
+import ProductsHandler from "./src/handlers/ProductsHandler"
+import JobsHandler from "./src/handlers/JobsHandler"
+
 const Redis = require("ioredis")
 require("dotenv").config()
 
-import { fetchZyteData } from "./src/zyte"
+// import { fetchZyteData } from "./src/zyte"
+
+const findProductsWithNullValues = data =>
+  data.filter(checkIfProductHasNullKeys)
+
+const checkIfProductHasNullKeys = product =>
+  Object.entries(product).some(([key, value]) => value === null)
 
 // ***************
 // Configure Redis
@@ -15,27 +24,23 @@ const redis = new Redis(redisConnectionString) // uses defaults unless given con
 // ***************
 const app = express()
 
+const productsHandler = new ProductsHandler(redis, "hi")
+const jobsHandler = new JobsHandler(redis)
+
+console.log(productsHandler.redis.get)
+
 // ***************
 // Routes / Endpoints
 // ***************
-app.get("/refresh_product_data/:runNumber", async (req, res, next) => {
-
-  const runNumber = req.params.runNumber
-
-  let data = await fetchZyteData(runNumber)
-  await redis.set("product_data", JSON.stringify(data))
-  await redis.set("products_last_updated", `${new Date()}`)
-  const msg = `Products successfully refreshed for run #${runNumber}`
-  console.log(msg)
-
-  res.json({
-    status: 200,
-    msg,
-  })
-})
-
-app.get("/fetch_product_data", async (req, res, next) => {
+app.get("/refresh_product_data/:runNumber", jobsHandler.RefreshProductData)
+app.get("/fetch_product_data", productsHandler.GetProductData)
+app.get("/fetch_null_product_data", async (req, res, next) => {
   let data = await redis.get("product_data")
+  // console.log(data)
+
+  data = JSON.parse(data)
+  data = findProductsWithNullValues(data)
+  // console.log(data)
 
   res.setHeader("Access-Control-Allow-Origin", "*")
 

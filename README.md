@@ -22,8 +22,10 @@ Hitting endpoints with GET requests will trigger the jobs on the server.
 
 The current endpoints are:
 
+- /fetch_product_data
+  - Returns the product data from Redis
 - /refresh_product_data
-- /refresh_airtable_data
+  - Retrieves the product data from Zyte and uploades it to Redis
 
 ## Connect to Redis
 
