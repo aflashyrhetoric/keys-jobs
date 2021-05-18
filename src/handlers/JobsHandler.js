@@ -7,8 +7,8 @@ export default class JobsHandler {
     const runNumber = req.params.runNumber
 
     let data = await fetchZyteData(runNumber)
-    await redis.set("product_data", JSON.stringify(data))
-    await redis.set("products_last_updated", `${new Date()}`)
+    await redis.set("raw_product_data", JSON.stringify(data))
+    await redis.set("raw_products_last_updated", `${new Date()}`)
     const msg = `Products successfully refreshed for run #${runNumber}`
     console.log(msg)
 

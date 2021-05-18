@@ -20,7 +20,7 @@ app.get(
 app.get("/fetch_product_data", ProductsHandler.getProductData)
 
 // DEBUG-ONLY ROUTES
-app.get("/fetch_null_product_data", ProductsHandler.getNullProductData)
+// app.get("/fetch_null_product_data", ProductsHandler.getNullProductData)
 
 // ******************************
 // All your base are belong to us
