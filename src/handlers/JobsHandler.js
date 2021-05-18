@@ -2,7 +2,7 @@ import init from "./initHandler"
 import { fetchZyteData } from "../zyte"
 
 export default class JobsHandler {
-  static async RefreshProductData(req, res, next) {
+  static async FetchScrapedDataFromZyte(req, res, next) {
     const { redis } = init()
     const runNumber = req.params.runNumber
 

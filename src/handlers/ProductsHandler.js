@@ -1,5 +1,6 @@
 import init from "./initHandler"
 export default class ProductsHandler {
+  // Returns the product data from the Redis cache
   static async getProductData(req, res) {
     const { redis } = init()
     const data = await redis.get("product_data")
@@ -11,6 +12,7 @@ export default class ProductsHandler {
     })
   }
 
+  // DEBUGGING ENDPOINT: Returns the data 
   static async getNullProductData(req, res) {
     const { redis } = init()
     const data = await redis.get("product_data")
