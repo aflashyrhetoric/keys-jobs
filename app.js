@@ -1,13 +1,19 @@
 import express from "express"
+import cors from "cors"
 import ProductsHandler from "./src/handlers/ProductsHandler"
 import JobsHandler from "./src/handlers/JobsHandler"
 import BarcodeHandler from "./src/handlers/BarcodeHandler"
 
 const app = express()
 
-// create application/json parser
+// Enable CORS pre-flight stuff and receipt of JSON bodies: https://www.npmjs.com/package/cors#configuration-options
+const corsConfig = {
+  origin: true, // Sets the origin equal to the origin of the request (as defined by req.Header("Origin"))
+  credentials: true, // Configures the Access-Control-Allow-Credentials CORS header. Set to true to pass the header, otherwise it is omitted.
+}
+app.use(cors({}))
 app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+// app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // *************************************
 // Jobs-related routes (not used by app)

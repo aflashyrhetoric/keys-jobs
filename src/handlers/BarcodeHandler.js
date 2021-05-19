@@ -26,7 +26,7 @@ export default class BarcodeHandler {
     const paramForAuth = `key=${BARCODE_LOOKUP_API_KEY}`
     console.log(req.body)
 
-    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
     res.json({
       status: 200,
       data: req.body.query,
