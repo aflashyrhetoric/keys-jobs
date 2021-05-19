@@ -11,7 +11,7 @@ const corsConfig = {
   origin: true, // Sets the origin equal to the origin of the request (as defined by req.Header("Origin"))
   credentials: true, // Configures the Access-Control-Allow-Credentials CORS header. Set to true to pass the header, otherwise it is omitted.
 }
-app.use(cors({}))
+app.use(cors(corsConfig))
 app.use(express.json()) // for parsing application/json
 // app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
