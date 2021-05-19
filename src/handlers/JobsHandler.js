@@ -18,7 +18,7 @@ export default class JobsHandler {
     })
   }
 
-  async SaveProductData(fields) {
-    console.log(fields)
-  }
+  // async SaveProductData(fields) {
+  //   console.log(fields)
+  // }
 }
