@@ -35,6 +35,7 @@ app.get(
 
 // GENERAL APPLICATION ROUTES
 app.get("/fetch_product_data", ProductsHandler.getProductData)
+app.get("/fetch_product_data_admin", ProductsHandler.getProductDataAdmin)
 app.post("/fetch_product_data", ProductsHandler.getProductData)
 
 // Products

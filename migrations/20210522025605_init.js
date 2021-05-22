@@ -6,7 +6,7 @@ exports.up = function (knex) {
     table.string("sku")
     table.string("full_title")
     table.string("product_name")
-    table.string("product_description")
+    table.text("product_description")
     table.string("url")
     table.string("img_path")
     table.string("size") // keyboardsize, not just "large"
@@ -15,7 +15,7 @@ exports.up = function (knex) {
     table.string("primary_led_color")
     table.string("hotswappable")
     table.string("interfaces")
-    table.string("features")
+    table.text("features")
     table.string("windows_compatible")
     table.string("mac_compatible")
     table.string("linux_compatible").nullable()

@@ -28,6 +28,28 @@ export default class ProductsHandler {
       data: JSON.parse(data),
     })
   }
+
+  static async getProductDataAdmin(req, res) {
+    const { redis } = init()
+    // FIXME
+    // FIXME
+    // FIXME
+    // FIXME
+    // FIXME
+    // FIXME
+    const scraped_data = await redis.get("raw_product_data")
+
+    const products = Product.getAll()
+
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.json({
+      status: 200,
+      data: JSON.parse({
+        scraped_data,
+        products,
+      }),
+    })
+  }
   // DEBUGGING ENDPOINT: Returns the data
   // static async getNullProductData(req, res) {
   //   const { redis } = init()

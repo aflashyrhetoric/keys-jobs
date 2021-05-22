@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon -r esm app.js",
     "migrate": "npx knex migrate:latest",
-    "migratedown": "npx knex migrate:down"
+    "migratedown": "npx knex migrate:down",
+    "migratedownall": "npx knex migrate:rollback --all"
   },
   "author": "",
   "license": "ISC",
