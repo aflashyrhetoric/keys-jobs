@@ -1,8 +1,6 @@
-import low from 'lowdb';
-import FileSync from 'lowdb/adapters/FileSync';
+import knex from "knex"
+import knexfile from "../knexfile"
 
-const adapter = new FileSync('db.json');
-const db = low(adapter);
-db.defaults({ date: '', genres: {} }).write();
+const db = knex(knexfile.development)
 
-export default db;
+export default db

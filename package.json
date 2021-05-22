@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r esm app.js"
+    "dev": "nodemon -r esm app.js",
+    "migrate": "npx knex migrate:latest"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,8 @@
   "devDependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "node-fetch": "^2.6.1"
+    "knex": "^0.95.6",
+    "node-fetch": "^2.6.1",
+    "pg": "^8.6.0"
   }
 }

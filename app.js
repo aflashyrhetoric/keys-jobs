@@ -4,6 +4,8 @@ import ProductsHandler from "./src/handlers/ProductsHandler"
 import JobsHandler from "./src/handlers/JobsHandler"
 import BarcodeHandler from "./src/handlers/BarcodeHandler"
 
+import ProductsController from "./src/controllers/ProductsController"
+
 const app = express()
 
 // Enable CORS pre-flight stuff and receipt of JSON bodies: https://www.npmjs.com/package/cors#configuration-options
@@ -29,6 +31,11 @@ app.get(
 
 // GENERAL APPLICATION ROUTES
 app.get("/fetch_product_data", ProductsHandler.getProductData)
+app.post("/fetch_product_data", ProductsHandler.getProductData)
+
+// Products
+app.post("/products", ProductsController.saveNewProduct)
+
 app.post("/search_products", BarcodeHandler.searchBarcode)
 
 // DEBUG-ONLY ROUTES

@@ -11,15 +11,15 @@ export default class ProductsHandler {
       data: JSON.parse(data),
     })
   }
-  
+
   static async getProductData(req, res) {
     const { redis } = init()
-    // FIXME 
-    // FIXME 
-    // FIXME 
-    // FIXME 
-    // FIXME 
-    // FIXME 
+    // FIXME
+    // FIXME
+    // FIXME
+    // FIXME
+    // FIXME
+    // FIXME
     const data = await redis.get("raw_product_data")
 
     res.setHeader("Access-Control-Allow-Origin", "*")
@@ -28,7 +28,6 @@ export default class ProductsHandler {
       data: JSON.parse(data),
     })
   }
-
   // DEBUGGING ENDPOINT: Returns the data
   // static async getNullProductData(req, res) {
   //   const { redis } = init()
