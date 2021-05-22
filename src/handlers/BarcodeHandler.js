@@ -24,7 +24,7 @@ export default class BarcodeHandler {
     const BARCODE_LOOKUP_BASEURL = "https://api.barcodelookup.com/v2/products"
     const paramForSearch = "search"
     const paramForAuth = `key=${BARCODE_LOOKUP_API_KEY}`
-    console.log(req.body)
+    // console.log(req.body)
 
     // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
     // res.json({

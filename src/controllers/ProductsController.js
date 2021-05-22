@@ -1,26 +1,12 @@
+import Product from "../model/Product"
 export default class ProductsController {
   static async saveNewProduct(req, res) {
     const product = req.body.product
+    const addedID = await Product.saveNewProduct(product)
+
+    res.json({
+      status: 200,
+      data: addedID,
+    })
   }
 }
-
-// table.increments("id")
-// table.string("brand")
-// table.string("full_title")
-// table.string("product_name")
-// table.string("product_description")
-// table.string("url")
-// table.string("img_path")
-// table.string("size") // keyboardsize, not just "large"
-// table.string("price") // full price
-// table.string("frame_color")
-// table.string("primary_led_color")
-// table.string("hotswappable")
-// table.string("interfaces")
-// table.string("features")
-// table.string("windows_compatible")
-// table.string("mac_compatible")
-// table.string("linux_compatible").nullable()
-// table.string("dimensions").nullable()
-// table.string("weight").nullable()
-// table.timestamps(true, true)

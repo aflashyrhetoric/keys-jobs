@@ -3,3 +3,4 @@ node_modules
 *.swp
 .env
 yarn-error.log
+*.crt

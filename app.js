@@ -6,6 +6,10 @@ import BarcodeHandler from "./src/handlers/BarcodeHandler"
 
 import ProductsController from "./src/controllers/ProductsController"
 
+// require("dotenv").config()
+
+// process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0
+
 const app = express()
 
 // Enable CORS pre-flight stuff and receipt of JSON bodies: https://www.npmjs.com/package/cors#configuration-options
