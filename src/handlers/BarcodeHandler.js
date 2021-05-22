@@ -24,6 +24,9 @@ export default class BarcodeHandler {
     const BARCODE_LOOKUP_BASEURL = "https://api.barcodelookup.com/v2/products"
     const paramForSearch = "search"
     const paramForAuth = `key=${BARCODE_LOOKUP_API_KEY}`
+    const paramForLocation = `geo=us`
+    const category = encodeURIComponent("Electronics > Electronics Accessories")
+    const paramForCategory = `category=${category}`
     // console.log(req.body)
 
     // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
@@ -39,15 +42,28 @@ export default class BarcodeHandler {
     if (query === "") return Promise.resolve([])
 
     const q = encodeURIComponent(query)
+    // const searchURL = `${BARCODE_LOOKUP_BASEURL}/?${paramForSearch}=${q}&${paramForLocation}&${paramForCategory}&${paramForAuth}`
     const searchURL = `${BARCODE_LOOKUP_BASEURL}/?${paramForSearch}=${q}&${paramForAuth}`
-    const data = await fetch(searchURL).then(r => r.json())
-
-    console.log(query, searchURL)
-
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
-    res.json({
-      status: 200,
-      data,
-    })
+    console.log(searchURL)
+    const data = await fetch(searchURL)
+      .then(r => {
+        return r.json()
+      })
+      .then(data => {
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
+        res.json({
+          status: 200,
+          data,
+          error: null,
+        })
+      })
+      .catch(e => {
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
+        res.json({
+          status: 200,
+          data: [],
+          error: e,
+        })
+      })
   }
 }

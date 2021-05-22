@@ -39,6 +39,8 @@ app.post("/fetch_product_data", ProductsHandler.getProductData)
 
 // Products
 app.post("/products", ProductsController.saveNewProduct)
+app.patch("/products/:productID", ProductsController.updateProduct)
+app.delete("/products/:productID", ProductsController.deleteProduct)
 
 app.post("/search_products", BarcodeHandler.searchBarcode)
 

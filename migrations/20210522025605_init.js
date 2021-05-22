@@ -2,6 +2,8 @@ exports.up = function (knex) {
   return knex.schema.createTable("products", table => {
     table.increments("id")
     table.string("brand")
+    table.string("upc")
+    table.string("sku")
     table.string("full_title")
     table.string("product_name")
     table.string("product_description")
@@ -24,5 +26,5 @@ exports.up = function (knex) {
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("users")
+  return knex.schema.dropTable("products")
 }
