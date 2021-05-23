@@ -3,7 +3,8 @@ exports.up = function (knex) {
     table.increments("id")
     table.string("brand")
     table.string("upc")
-    table.string("sku")
+    table.string("sku") // MechanicalKeyboards by default
+    table.string("asins")
     table.string("full_title")
     table.string("product_name")
     table.text("product_description")
