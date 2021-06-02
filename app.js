@@ -24,10 +24,8 @@ app.use(express.json()) // for parsing application/json
 // *************************************
 // Jobs-related routes (not used by app)
 // *************************************
-app.get(
-  "/refresh_product_data/:runNumber",
-  JobsHandler.FetchScrapedDataFromZyte,
-)
+app.get("/cache_scraped_data/:runNumber", JobsHandler.FetchScrapedDataFromZyte)
+app.get("/cache_verified_data", JobsHandler.CacheVerifiedProductData)
 
 // ******************
 // Application routes
