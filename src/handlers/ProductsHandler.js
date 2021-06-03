@@ -34,8 +34,8 @@ export default class ProductsHandler {
     res.json({
       status: 200,
       data: {
-        scraped_data,
-        products,
+        scraped_data: scraped_data || [],
+        products: products || [],
       },
     })
   }

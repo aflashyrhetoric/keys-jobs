@@ -16,6 +16,7 @@ exports.up = function (knex) {
     table.string("primary_led_color")
     table.string("hotswappable")
     table.string("interfaces")
+    table.string("available_switch_variants")
     table.text("features")
     table.string("windows_compatible")
     table.string("mac_compatible")

@@ -26,6 +26,7 @@ export const fetchZyteData = async (runNumber) => {
 
   const { data } = scraped_data_response
   console.log("Data retrieved...")
+  console.log("Caching complete.")
   return data
 }
 
