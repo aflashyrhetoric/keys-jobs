@@ -10,9 +10,9 @@ export default class ProductsController {
     })
   }
   static async updateProduct(req, res) {
-    const productID = req.params.productID
+    const sku = req.params.sku
     const product = req.body.product
-    const updatedID = await Product.saveUpdatesToProduct(productID, product)
+    const updatedID = await Product.saveUpdatesToProduct(sku, product)
 
     res.json({
       status: 200,
@@ -20,9 +20,9 @@ export default class ProductsController {
     })
   }
   static async deleteProduct(req, res) {
-    const productID = req.params.productID
+    const sku = req.params.sku
     const product = req.body.product
-    const deletedID = await Product.deleteProduct(productID, product)
+    const deletedID = await Product.deleteProduct(sku, product)
 
     res.json({
       status: 200,

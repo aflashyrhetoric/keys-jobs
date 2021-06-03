@@ -38,8 +38,8 @@ app.post("/fetch_product_data", ProductsHandler.getProductData)
 
 // Products
 app.post("/products", ProductsController.saveNewProduct)
-app.patch("/products/:productID", ProductsController.updateProduct)
-app.delete("/products/:productID", ProductsController.deleteProduct)
+app.patch("/products/:sku", ProductsController.updateProduct)
+app.delete("/products/:sku", ProductsController.deleteProduct)
 
 app.post("/search_products", BarcodeHandler.searchBarcode)
 
