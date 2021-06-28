@@ -8,8 +8,6 @@ export default class ProductsController {
       status: 200,
       data: addedID,
     })
-  }
-  static async updateProduct(req, res) {
     const sku = req.params.sku
     const product = req.body.product
     const updatedID = await Product.saveUpdatesToProduct(sku, product)
@@ -19,6 +17,7 @@ export default class ProductsController {
       data: updatedID,
     })
   }
+
   static async deleteProduct(req, res) {
     const sku = req.params.sku
     const product = req.body.product

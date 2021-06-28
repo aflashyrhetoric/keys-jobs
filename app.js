@@ -1,10 +1,12 @@
 import express from "express"
 import cors from "cors"
 import ProductsHandler from "./src/handlers/ProductsHandler"
+import BuildsHandler from "./src/handlers/BuildsHandler"
 import JobsHandler from "./src/handlers/JobsHandler"
 import BarcodeHandler from "./src/handlers/BarcodeHandler"
 
 import ProductsController from "./src/controllers/ProductsController"
+import BuildsController from "./src/controllers/BuildsController"
 
 // require("dotenv").config()
 
@@ -40,6 +42,9 @@ app.post("/fetch_product_data", ProductsHandler.getProductData)
 app.post("/products", ProductsController.saveNewProduct)
 app.patch("/products/:sku", ProductsController.updateProduct)
 app.delete("/products/:sku", ProductsController.deleteProduct)
+
+// Builds
+app.get("/builds", BuildsController.saveNewBuild)
 
 app.post("/search_products", BarcodeHandler.searchBarcode)
 
