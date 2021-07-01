@@ -8,8 +8,9 @@ export default class ProductsController {
       status: 200,
       data: addedID,
     })
+
     const sku = req.params.sku
-    const product = req.body.product
+
     const updatedID = await Product.saveUpdatesToProduct(sku, product)
 
     res.json({

@@ -1,16 +1,15 @@
 import Build from "../model/Build"
 export default class BuildsController {
   static async saveNewBuild(req, res) {
-    const Build = req.body.Build
-    const addedID = await Build.saveNewBuild(Build)
+    const build = req.body.build
+    const addedID = await Build.saveNewBuild(build)
 
     res.json({
       status: 200,
       data: addedID,
     })
     const sku = req.params.sku
-    const Build = req.body.Build
-    const updatedID = await Build.saveUpdatesToBuild(sku, Build)
+    const updatedID = await Build.saveUpdatesToBuild(sku, build)
 
     res.json({
       status: 200,
