@@ -44,7 +44,7 @@ app.patch("/products/:sku", ProductsController.updateProduct)
 app.delete("/products/:sku", ProductsController.deleteProduct)
 
 // Builds
-app.get("/builds", BuildsController.saveNewBuild)
+// app.get("/builds", BuildsController.saveNewBuild)
 
 app.post("/search_products", BarcodeHandler.searchBarcode)
 

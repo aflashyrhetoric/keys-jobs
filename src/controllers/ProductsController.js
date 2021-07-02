@@ -19,6 +19,8 @@ export default class ProductsController {
     })
   }
 
+  static async updateProduct(req, res) {}
+
   static async deleteProduct(req, res) {
     const sku = req.params.sku
     const product = req.body.product
