@@ -16,7 +16,8 @@ export default class ProductsHandler {
 
   static async getProductData(req, res) {
     const { redis } = init()
-    const data = await redis.get("verified_product_data")
+    const data = await redis.get("raw_product_data") // FOR DEBUGGING ONLY
+    // const data = await redis.get("verified_product_data")
 
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.json({
